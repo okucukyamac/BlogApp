@@ -18,7 +18,7 @@ namespace BlogApp.Controllers
         public IActionResult BlogReadAll(int id)
         {
             List<Blog> values = bm.GetBlogById(id);
-            return View();
+            return View(values);
         }
     }
 }
