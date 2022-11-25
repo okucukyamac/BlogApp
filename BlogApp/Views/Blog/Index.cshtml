@@ -21,7 +21,7 @@
                     @foreach (var item in Model)
                     {
                         <div class="col-md-4 card">
-                            <a href="single.html">
+                            <a href="/Blog/BlogReadAll/@item.Id">
                                 <img src="@item.Image" class="card-img-top img-fluid" alt="">
                             </a>
                             <div class="card-body">
@@ -44,7 +44,7 @@
 
                                 </ul>
                                 <h5 class="card-title ">
-                                    <a href="single.html">@item.Title</a>
+                                    <a href="/Blog/BlogReadAll/@item.Id">@item.Title</a>
                                 </h5>
                                 <p class="card-text mb-3">
 
