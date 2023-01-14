@@ -10,9 +10,9 @@ namespace BlogApp.ViewComponents
         {
             var commentValues = new List<UserComment>()
             {
-                new UserComment() {Id=1,Name="Murat"},
-                new UserComment() {Id=2,Name="Mesut"},
-                new UserComment() {Id=3,Name="Merve"},
+                new UserComment() {Id=1,UserName="Murat"},
+                new UserComment() {Id=2,UserName="Mesut"},
+                new UserComment() {Id=3,UserName="Merve"},
             };
             return View(commentValues);
         }

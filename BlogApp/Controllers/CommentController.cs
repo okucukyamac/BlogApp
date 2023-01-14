@@ -6,7 +6,7 @@ namespace BlogApp.Controllers
 {
     public class CommentController : Controller
     {
-        CommentManager categoryManager = new CommentManager(new EfCommentRepository());
+        CommentManager cm = new CommentManager(new EfCommentRepository());
         public IActionResult Index()
         {
             return View();
@@ -19,8 +19,8 @@ namespace BlogApp.Controllers
 
         public PartialViewResult CommentListByBlog(int id)
         {
-            categoryManager.GetAll(id);
-            return PartialView();
+            var values = cm.GetAll(id);
+            return PartialView(values);
         }
     }
 }
