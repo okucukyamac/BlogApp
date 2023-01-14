@@ -10,10 +10,11 @@ namespace BlogApp.ViewComponents.Comment
     {
         CommentManager cm = new CommentManager(new EfCommentRepository());
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            var values = cm.GetAll(13);
+            var values = cm.GetAll(id);
             return View(values);
         }
     }
 }
+
