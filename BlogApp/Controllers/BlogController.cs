@@ -20,6 +20,7 @@ namespace BlogApp.Controllers
             ViewBag.Id = id;
             List<Blog> values = bm.GetBlogById(id);
             return View(values);
+
         }
     }
 }

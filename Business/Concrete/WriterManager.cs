@@ -22,5 +22,10 @@ namespace Business.Concrete
 		{
 			_writerDal.Add(writer);
 		}
-	}
+
+        public void Delete(Writer writer)
+        {
+            _writerDal.Delete(writer);
+        }
+    }
 }

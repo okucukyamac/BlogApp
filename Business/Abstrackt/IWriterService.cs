@@ -10,5 +10,6 @@ namespace Business.Abstrackt
 	public interface IWriterService
 	{
 		void Add(Writer writer);
+		void Delete(Writer writer);
 	}
 }

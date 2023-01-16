@@ -50,6 +50,10 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+.field-validation-error {
+    color: red;
+}
+
 @-ms-viewport {
   width: device-width;
 }
