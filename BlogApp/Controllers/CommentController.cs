@@ -27,7 +27,7 @@ namespace BlogApp.Controllers
             model.BlogId= 2;
             cm.Add(model);
 
-            return View();
+            return RedirectToAction();
         }
 
         public PartialViewResult CommentListByBlog(int id)
