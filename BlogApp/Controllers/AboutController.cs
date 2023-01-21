@@ -9,13 +9,14 @@ namespace BlogApp.Controllers
 		AboutManager abm = new AboutManager(new EfAboutRepository());
 		public IActionResult Index()
 		{
-			return View();
+			var values = abm.GetList();
+
+			return View(values);
 		}
 
 		public PartialViewResult SocialMedia()
 		{
-			var values = abm.GetList();
-			return PartialView(values);
+			return PartialView();
 		}
 	}
 }
