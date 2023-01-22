@@ -28,7 +28,6 @@ namespace BlogApp
 		{
 			services.AddControllersWithViews();
 
-			services.AddSession();
 
 			services.AddMvc(config =>
 			{
@@ -65,7 +64,8 @@ namespace BlogApp
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseSession();
+			app.UseAuthentication();
+
 
 			app.UseRouting();
 
