@@ -1,22 +1,33 @@
-﻿<div class="tech-btm">
+﻿@using Entity.Concrete
+@model List<Blog>
+
+
+<div class="tech-btm">
     <h3>Latest Posts</h3>
-    <div class="blog-grids row mb-3">
-        <div class="col-md-5 blog-grid-left">
-            <a href="single.html">
-                <img src="~/CoreBlogTema/images/4.jpg" class="card-img-top img-fluid" alt="">
-            </a>
-        </div>
-        <div class="col-md-7 blog-grid-right">
+    @foreach (var item in Model)
+    {
 
-            <h5>
-                <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-            </h5>
-            <div class="sub-meta">
-                <span>
-                    <i class="far fa-clock"></i> 20 Jan, 2018
-                </span>
+        <div class="blog-grids row mb-3">
+            <div class="col-md-5 blog-grid-left">
+                <a href="/Blog/BlogReadAll/@item.Id">
+                    <img src="@item.Image" class="card-img-top img-fluid" alt="">
+                </a>
             </div>
-        </div>
+            <div class="col-md-7 blog-grid-right">
 
-    </div>
+                <h5>
+                    <a href="/Blog/BlogReadAll/@item.Id" style="color:white">@item.Title</a>
+                </h5>
+                <div class="sub-meta">
+                    <span>
+                        <i class="far fa-clock"></i> @item.InsertDate.ToString("dd-MM-yyyy")
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    }
+
 </div>
+
+
