@@ -19,5 +19,10 @@ namespace BlogApp.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult Test()
+		{
+			return View();
+		}
 	}
 }
