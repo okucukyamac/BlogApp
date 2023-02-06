@@ -22,5 +22,27 @@ namespace Business.Concrete
 		{
 			_newsLetterDal.Add(newsLetter);
 		}
-	}
+
+        public void Delete(NewsLetter entity)
+        {
+            _newsLetterDal.Delete(entity);
+        }
+
+        public List<NewsLetter> GetAll()
+        {
+            List<NewsLetter> newsLetters=_newsLetterDal.GetAll();
+            return newsLetters;
+        }
+
+        public NewsLetter GetById(int id)
+        {
+            NewsLetter newsLetter = _newsLetterDal.GetById(id);
+            return newsLetter;
+        }
+
+        public void Update(NewsLetter entity)
+        {
+            _newsLetterDal.Update(entity);  
+        }
+    }
 }

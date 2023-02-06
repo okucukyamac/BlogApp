@@ -27,5 +27,22 @@ namespace Business.Concrete
         {
             _writerDal.Delete(writer);
         }
+
+        public List<Writer> GetAll()
+        {
+           List<Writer> writers= _writerDal.GetAll();
+            return writers;
+        }
+
+        public Writer GetById(int id)
+        {
+            Writer writer = _writerDal.GetById(id);
+            return writer;
+        }
+
+        public void Update(Writer entity)
+        {
+            _writerDal.Update(entity);
+        }
     }
 }

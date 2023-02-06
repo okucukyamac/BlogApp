@@ -31,12 +31,14 @@ namespace Business.Concrete
 
         public List<Category> GetAll()
         {
-            return _categoryDal.GetAll();
+            List<Category> categories = _categoryDal.GetAll();
+            return categories;
         }
 
         public Category GetById(int id)
         {
-            return _categoryDal.GetById(id);
+            Category category= _categoryDal.GetById(id);
+            return category;
         }
 
         public void Update(Category category)

@@ -9,28 +9,13 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class BlogManager : IBlogServices
+    public class BlogManager :IBlogServices
     {
         IBlogDal _blogDal;
 
         public BlogManager(IBlogDal blogDal)
         {
             _blogDal = blogDal;
-        }
-
-        public void Add(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Blog blog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Blog> GetAll()
-        {
-            return _blogDal.GetAll();
         }
 
         public List<Blog> GetBlogListWithBlogCategory()
@@ -41,16 +26,6 @@ namespace Business.Concrete
         public List<Blog> GetBlogListWithCategory()
         {
             return _blogDal.GetListWithCategory();
-        }
-
-        public Blog GetById(int id)
-        {
-            return _blogDal.GetById(id);
-        }
-
-        public void Update(Blog blog)
-        {
-            throw new NotImplementedException();
         }
 
         public List<Blog> GetBlogById(int id)
@@ -66,6 +41,33 @@ namespace Business.Concrete
         public List<Blog> GetLastBlog(int count)
         {
             return _blogDal.GetAll().TakeLast(count).ToList();
+        }
+
+        public void Add(Blog entity)
+        {
+            _blogDal.Add(entity);
+        }
+
+        public void Update(Blog entity)
+        {
+            _blogDal.Update(entity);
+        }
+
+        public void Delete(Blog entity)
+        {
+            _blogDal.Delete(entity);
+        }
+
+        public List<Blog> GetAll()
+        {
+            List<Blog> blogs = _blogDal.GetAll();
+            return blogs;
+        }
+
+        public Blog GetById(int id)
+        {
+            Blog blog = _blogDal.GetById(id);
+            return blog;
         }
     }
 }

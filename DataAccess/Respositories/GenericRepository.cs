@@ -50,5 +50,6 @@ namespace DataAccess.Respositories
             c.Update(entity);
             c.SaveChanges();
         }
+
     }
 }
