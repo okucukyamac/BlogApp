@@ -23,6 +23,12 @@ namespace BlogApp.Controllers
 
         }
 
-        
+        public IActionResult BlogListByWriter()
+        {
+            var values = bm.GetBlogListByWriter(1);
+            return View(values);
+        }
+
+
     }
 }
