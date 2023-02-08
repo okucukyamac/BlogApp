@@ -42,6 +42,7 @@ namespace BlogApp.Controllers
 
         [HttpGet]
         public IActionResult BlogAdd()
+        
         {
             CategoryManager cm = new CategoryManager(new EfCategoryRepository());
             List<SelectListItem> categories = (from x in cm.GetAll()
