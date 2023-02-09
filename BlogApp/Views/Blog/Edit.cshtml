@@ -4,36 +4,39 @@
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
 
-<h1>Yeni Blog Girişi</h1>
+<h1>Blog Güncelle</h1>
 <br />
-<form asp-controller="Blog" asp-action="BlogAdd" method="post">
+<form asp-controller="Blog" asp-action="EditBlog" method="post">
+
+    <input asp-for="Id" hidden/>
+    <input asp-for="WriterId" hidden/>
 
     <label asp-for="Title">Blog Başlığı</label>
-    <input asp-for="Title" class="form-control" name="Title"/>
+    <input asp-for="Title" class="form-control"/>
     <span asp-validation-for="Title" class="val-error"></span>
 
     <br />
 
     <label asp-for="Image">Blog Görseli</label>
-    <input asp-for="Image" type="text" class="form-control" name="Image" />
+    <input asp-for="Image" type="text" class="form-control"/>
     <span asp-validation-for="Image" class="val-error"></span>
 
     <br />
 
     <label asp-for="ThumbnailImage">Blog Küçük Görsel</label>
-    <input asp-for="ThumbnailImage" class="form-control" name="ThumbnailImage" />
+    <input asp-for="ThumbnailImage" class="form-control" />
 
     <br />
 
-    <label asp-for="Category">Kategori</label>
-    <select asp-for="Category" asp-items="ViewBag.Categories" class="form-control" name="CategoryId">
-        <option style="display:none">Kategori Seçiniz</option>
+    <label asp-for="CategoryId">Kategori</label>
+    <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-control">
+        <option value="@Model.CategoryId"></option>
     </select>
 
     <br />
 
     <label asp-for="Content">Blog İçeriği</label>
-    <textarea asp-for="Content" class="form-control" rows="10" name="Content"> </textarea>
+    <textarea asp-for="Content" class="form-control" rows="10" > </textarea>
 
     <br />
 

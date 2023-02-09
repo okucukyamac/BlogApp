@@ -42,15 +42,15 @@ namespace BlogApp.Controllers
 
         [HttpGet]
         public IActionResult BlogAdd()
-        
+
         {
             CategoryManager cm = new CategoryManager(new EfCategoryRepository());
             List<SelectListItem> categories = (from x in cm.GetAll()
-                                                   select new SelectListItem
-                                                   {
-                                                       Text=x.Name,
-                                                       Value=x.Id.ToString()
-                                                   }).ToList();
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.Name,
+                                                   Value = x.Id.ToString()
+                                               }).ToList();
 
             ViewBag.Categories = categories;
             return View();
@@ -71,12 +71,10 @@ namespace BlogApp.Controllers
                 bm.Add(blog);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }
-            else
+
+            foreach (var item in results.Errors)
             {
-                foreach (var item in results.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
+                ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
             }
             return View();
         }
@@ -91,6 +89,14 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> categories = (from x in cm.GetAll()
+                                               select new SelectListItem
+                                               {
+                                                   Text = x.Name,
+                                                   Value = x.Id.ToString()
+                                               }).ToList();
+            ViewBag.Categories = categories;
             Blog blog = bm.GetById(id);
             return View(blog);
         }
@@ -98,7 +104,20 @@ namespace BlogApp.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
-            return RedirectToAction("BlogListByWriter");
+            BlogValidator bv = new BlogValidator();
+            ValidationResult results = bv.Validate(blog);
+
+            if (results.IsValid)
+            {
+                bm.Update(blog);
+                return RedirectToAction("BlogListByWriter");
+            }
+
+            foreach (var item in results.Errors)
+            {
+                ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            }
+            return View();
         }
 
 
