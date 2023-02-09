@@ -1,0 +1,43 @@
+﻿@model Entity.Concrete.Blog
+@{
+    ViewData["Title"] = "Blog Güncelle";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h1>Yeni Blog Girişi</h1>
+<br />
+<form asp-controller="Blog" asp-action="BlogAdd" method="post">
+
+    <label asp-for="Title">Blog Başlığı</label>
+    <input asp-for="Title" class="form-control" name="Title"/>
+    <span asp-validation-for="Title" class="val-error"></span>
+
+    <br />
+
+    <label asp-for="Image">Blog Görseli</label>
+    <input asp-for="Image" type="text" class="form-control" name="Image" />
+    <span asp-validation-for="Image" class="val-error"></span>
+
+    <br />
+
+    <label asp-for="ThumbnailImage">Blog Küçük Görsel</label>
+    <input asp-for="ThumbnailImage" class="form-control" name="ThumbnailImage" />
+
+    <br />
+
+    <label asp-for="Category">Kategori</label>
+    <select asp-for="Category" asp-items="ViewBag.Categories" class="form-control" name="CategoryId">
+        <option style="display:none">Kategori Seçiniz</option>
+    </select>
+
+    <br />
+
+    <label asp-for="Content">Blog İçeriği</label>
+    <textarea asp-for="Content" class="form-control" rows="10" name="Content"> </textarea>
+
+    <br />
+
+    <button class="btn btn-success">Kaydet</button>
+
+
+</form>

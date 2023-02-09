@@ -30,7 +30,7 @@ namespace BlogApp.Controllers
 
         public IActionResult BlogListByWriter()
         {
-            var values = bm.GetBlogListByWriter(1);
+            var values = bm.GetListWithCategoryByWriter(1);
             return View(values);
         }
 
@@ -79,6 +79,26 @@ namespace BlogApp.Controllers
                 }
             }
             return View();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var blog = bm.GetById(id);
+            bm.Delete(blog);
+            return RedirectToAction("BlogListByWriter");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Blog blog = bm.GetById(id);
+            return View(blog);
+        }
+
+        [HttpPost]
+        public IActionResult EditBlog(Blog blog)
+        {
+            return RedirectToAction("BlogListByWriter");
         }
 
 

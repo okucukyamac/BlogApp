@@ -69,5 +69,10 @@ namespace Business.Concrete
             Blog blog = _blogDal.GetById(id);
             return blog;
         }
+
+        public List<Blog> GetListWithCategoryByWriter(int id)
+        {
+            return _blogDal.GetListWithCategoryByWriter(id);
+        }
     }
 }
